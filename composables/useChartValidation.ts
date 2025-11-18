@@ -1,62 +1,6 @@
-import * as yup from 'yup'
-
-// Validation schemas for chart data structures
-
-const pointSchema = yup.object({
-  x: yup.number().required(),
-  y: yup.number().required(),
-  r: yup.number().optional()
-})
-
-const areaDataSchema = yup.object({
-  upper: yup.array().of(yup.number().required()).required(),
-  lower: yup.array().of(yup.number().required()).required()
-}).test('matching-lengths', 'Upper and lower arrays must have the same length', function(value) {
-  if (!value) return true
-  return value.upper.length === value.lower.length
-})
-
-const componentSchema = yup.object({
-  id: yup.string().required(),
-  type: yup.string().oneOf(['line', 'area', 'points', 'bar', 'histogram', 'errorbar', 'boxplot', 'heatmap', 'stackedarea', 'bubble', 'groupedbar', 'violin']).required(),
-  label: yup.string().required(),
-  data: yup.mixed().required(),
-  color: yup.string().required(),
-  strokeWidth: yup.number().optional(),
-  showPoints: yup.boolean().optional(),
-  pointSize: yup.number().optional(),
-  lifetimeStart: yup.number().required(),
-  lifetimeEnd: yup.number().nullable().optional()
-})
-
-const chartDataSchema = yup.object({
-  labels: yup.array().of(yup.mixed()).optional(),
-  components: yup.array().of(componentSchema).optional(),
-  currentState: yup.number().optional(),
-  xRange: yup.array().of(yup.number()).length(2).optional(),
-  yRange: yup.array().of(yup.number()).length(2).optional(),
-  xAxisLabel: yup.string().optional(),
-  yAxisLabel: yup.string().optional()
-})
+// Chart data validation utilities
 
 export function useChartValidation() {
-  const validateChartData = async (data: any) => {
-    try {
-      await chartDataSchema.validate(data, { abortEarly: false })
-      return { valid: true, errors: [] }
-    } catch (err) {
-      if (err instanceof yup.ValidationError) {
-        return {
-          valid: false,
-          errors: err.errors
-        }
-      }
-      return {
-        valid: false,
-        errors: ['Unknown validation error']
-      }
-    }
-  }
 
   const validateComponent = (comp: any, xLabelsLength: number) => {
     const errors: string[] = []
@@ -161,6 +105,9 @@ export function useChartValidation() {
       errors
     }
   }
+
+  // Alias for backwards compatibility - validateChartData now uses sync validation
+  const validateChartData = validateChartDataSync
 
   return {
     validateChartData,
