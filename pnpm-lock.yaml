@@ -51,6 +51,9 @@ importers:
       '@slidev/cli':
         specifier: ^52.8.0
         version: 52.8.0(@babel/parser@7.28.5)(@nuxt/kit@3.20.1(magicast@0.5.1))(@types/markdown-it@14.1.2)(@types/node@22.19.1)(@unocss/webpack@66.5.6(webpack@5.102.1))(@vue/compiler-sfc@3.5.24)(magicast@0.5.1)(markdown-it-async@2.2.0)(postcss@8.5.6)(terser@5.44.1)
+      vite:
+        specifier: ^7.2.2
+        version: 7.2.2(@types/node@22.19.1)(jiti@2.6.1)(terser@5.44.1)(yaml@2.8.1)
 
 packages:
 
