@@ -422,39 +422,6 @@ $$ {1|3|all}
 $$
 
 ---
-
-# Bayesian Optimization
-
-<script setup>
-import { ref, onMounted } from 'vue'
-
-const bayesStates = ref([])
-
-onMounted(async () => {
-  // Load labels from the generated labels.json file
-  const labelsResponse = await fetch('/bayes-opt/labels.json')
-  const labels = await labelsResponse.json()
-
-  bayesStates.value = labels.map(item => ({
-    label: item.label,
-    data: `/bayes-opt/state-${String(item.index).padStart(2, '0')}.json`
-  }))
-})
-</script>
-
-<div v-if="bayesStates.length === 0" style="text-align: center; padding: 2rem; color: var(--c-subtext0);">
-  Loading Bayesian optimization data...
-</div>
-<AnimatedChart
-  v-else
-  :states="bayesStates"
-  :height="350"
-  :transitionDuration="1200"
-  legendPosition="top-center"
-/>
-
-
----
 src: primevue-components.md
 ---
 
