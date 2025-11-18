@@ -1,0 +1,48 @@
+{
+  "name": "slidev-theme-foamscience",
+  "version": "0.1.0",
+  "type": "module",
+  "keywords": [
+    "slidev-theme",
+    "slidev"
+  ],
+  "engines": {
+    "node": ">=18.0.0",
+    "slidev": ">=0.48.0"
+  },
+  "scripts": {
+    "build": "slidev build example.md",
+    "dev": "slidev example.md --open",
+    "export": "slidev export example.md",
+    "screenshot": "slidev export example.md --format png"
+  },
+  "dependencies": {
+    "@iconify-json/carbon": "^1.2.14",
+    "@iconify-json/fa7-regular": "^1.2.1",
+    "@iconify-json/fa7-solid": "^1.2.2",
+    "@iconify-json/logos": "^1.2.10",
+    "@iconify-json/marketeq": "^1.2.2",
+    "@iconify-json/material-symbols": "^1.2.46",
+    "@iconify-json/mdi": "^1.2.3",
+    "@iconify-json/uim": "^1.2.3",
+    "@slidev/types": "^52.8.0",
+    "d3": "^7.9.0",
+    "plotly.js-dist-min": "^3.3.0",
+    "primeicons": "^7.0.0",
+    "primevue": "^4.4.1",
+    "yup": "^1.7.1"
+  },
+  "devDependencies": {
+    "@slidev/cli": "^52.8.0"
+  },
+  "//": "Learn more: https://sli.dev/guide/write-theme.html",
+  "slidev": {
+    "colorSchema": "both",
+    "defaults": {
+      "fonts": {
+        "sans": "Nunito Sans",
+        "mono": "Fira Code"
+      }
+    }
+  }
+}
