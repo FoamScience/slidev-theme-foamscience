@@ -1,0 +1,569 @@
+:root {
+  /* Catppuccin Latte (Light) */
+  --slidev-theme-primary: #1e66f5; /* Blue */
+
+  /* Base colors */
+  --c-rosewater: #dc8a78;
+  --c-flamingo: #dd7878;
+  --c-pink: #ea76cb;
+  --c-mauve: #8839ef;
+  --c-red: #d20f39;
+  --c-maroon: #e64553;
+  --c-peach: #fe640b;
+  --c-yellow: #df8e1d;
+  --c-green: #40a02b;
+  --c-teal: #179299;
+  --c-sky: #04a5e5;
+  --c-sapphire: #209fb5;
+  --c-blue: #1e66f5;
+  --c-lavender: #7287fd;
+
+  /* Text colors */
+  --c-text: #4c4f69;
+  --c-subtext1: #5c5f77;
+  --c-subtext0: #6c6f85;
+
+  /* Overlay colors */
+  --c-overlay2: #7c7f93;
+  --c-overlay1: #8c8fa1;
+  --c-overlay0: #9ca0b0;
+
+  /* Surface colors */
+  --c-surface2: #acb0be;
+  --c-surface1: #bcc0cc;
+  --c-surface0: #ccd0da;
+
+  /* Base background colors */
+  --c-base: #eff1f5;
+  --c-mantle: #e6e9ef;
+  --c-crust: #dce0e8;
+
+  /* Override Slidev's default variables with Catppuccin Latte */
+  --slidev-theme-accents-primary: var(--c-blue);
+  --slidev-theme-accents-blue: var(--c-blue);
+  --slidev-theme-accents-teal: var(--c-teal);
+  --slidev-theme-accents-green: var(--c-green);
+  --slidev-theme-accents-yellow: var(--c-yellow);
+  --slidev-theme-accents-red: var(--c-red);
+  --slidev-theme-accents-mauve: var(--c-mauve);
+
+  /* Background and foreground colors */
+  --slidev-theme-background: var(--c-base);
+  --slidev-theme-foreground: var(--c-text);
+
+  /* Code block colors */
+  --slidev-code-background: var(--c-mantle);
+  --slidev-code-foreground: var(--c-text);
+
+  /* Border colors */
+  --slidev-theme-border: var(--c-overlay0);
+}
+
+html:not(.dark) {
+  color-scheme: light;
+  --slidev-theme-primary: #1e66f5;
+}
+
+.dark {
+  /* Catppuccin Mocha (Dark) */
+  --slidev-theme-primary: #89b4fa; /* Blue */
+
+  /* Base colors */
+  --c-rosewater: #f5e0dc;
+  --c-flamingo: #f2cdcd;
+  --c-pink: #f5c2e7;
+  --c-mauve: #cba6f7;
+  --c-red: #f38ba8;
+  --c-maroon: #eba0ac;
+  --c-peach: #fab387;
+  --c-yellow: #f9e2af;
+  --c-green: #a6e3a1;
+  --c-teal: #94e2d5;
+  --c-sky: #89dceb;
+  --c-sapphire: #74c7ec;
+  --c-blue: #89b4fa;
+  --c-lavender: #b4befe;
+
+  /* Text colors */
+  --c-text: #cdd6f4;
+  --c-subtext1: #bac2de;
+  --c-subtext0: #a6adc8;
+
+  /* Overlay colors */
+  --c-overlay2: #9399b2;
+  --c-overlay1: #7f849c;
+  --c-overlay0: #6c7086;
+
+  /* Surface colors */
+  --c-surface2: #585b70;
+  --c-surface1: #45475a;
+  --c-surface0: #313244;
+
+  /* Base background colors */
+  --c-base: #1e1e2e;
+  --c-mantle: #181825;
+  --c-crust: #11111b;
+
+  /* Override Slidev's default variables with Catppuccin Mocha */
+  --slidev-theme-accents-primary: var(--c-blue);
+  --slidev-theme-accents-blue: var(--c-blue);
+  --slidev-theme-accents-teal: var(--c-teal);
+  --slidev-theme-accents-green: var(--c-green);
+  --slidev-theme-accents-yellow: var(--c-yellow);
+  --slidev-theme-accents-red: var(--c-red);
+  --slidev-theme-accents-mauve: var(--c-mauve);
+
+  /* Background and foreground colors */
+  --slidev-theme-background: var(--c-base);
+  --slidev-theme-foreground: var(--c-text);
+
+  /* Code block colors */
+  --slidev-code-background: var(--c-mantle);
+  --slidev-code-foreground: var(--c-text);
+
+  /* Border colors */
+  --slidev-theme-border: var(--c-overlay0);
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+/* Apply Catppuccin colors globally */
+body,
+#slideshow,
+.slidev-layout {
+  background-color: var(--c-base);
+  color: var(--c-text);
+}
+
+/* Links */
+a {
+  color: var(--c-blue);
+}
+
+a:hover {
+  color: var(--c-sapphire);
+}
+
+/* Code blocks */
+pre,
+code {
+  background-color: var(--c-mantle) !important;
+  color: var(--c-text) !important;
+}
+
+/* Inline code */
+:not(pre) > code {
+  background-color: var(--c-surface0) !important;
+  color: var(--c-mauve) !important;
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--c-text);
+}
+
+/* Borders and dividers */
+hr {
+  border-color: var(--c-overlay0);
+}
+
+/* Tables */
+table {
+  border-color: var(--c-overlay0);
+}
+
+th {
+  background-color: var(--c-surface0);
+  color: var(--c-text);
+}
+
+td {
+  border-color: var(--c-surface1);
+}
+
+/* Blockquotes */
+blockquote {
+  position: relative;
+  margin: 1.5rem 0;
+  padding: 1rem 1.5rem;
+  padding-left: 3.5rem;
+  padding-right: 2rem;
+  background-color: var(--c-mantle);
+  border-left: 4px solid var(--c-blue) !important;
+  border-right: 4px solid var(--c-blue) !important;
+  border-radius: 0 !important;
+  color: var(--c-text);
+  font-style: italic;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+blockquote::before {
+  content: '"';
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  font-size: 2.5rem;
+  line-height: 1;
+  color: var(--c-blue);
+  opacity: 0.3;
+  font-family: Georgia, serif;
+}
+
+blockquote p {
+  margin: 0.5rem 0;
+  padding-left: 30px;
+  color: var(--c-text);
+}
+
+blockquote p:first-child {
+  margin-top: 0;
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Ensure all blockquote content has proper padding */
+blockquote > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Dark mode adjustments */
+html.dark blockquote {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Lists */
+ul, ol {
+  color: var(--c-text);
+}
+
+/* Strong and emphasis */
+strong {
+  color: var(--c-text);
+}
+
+em {
+  color: var(--c-subtext0);
+}
+
+/* Header numbering styles - using data attributes */
+/* Number h1 headers */
+body.header-numbering-enabled h1[data-number]::before {
+  content: attr(data-number) " ";
+  color: var(--c-blue);
+  margin-right: 0.5rem;
+}
+
+/* Number h2 headers */
+body.header-numbering-enabled h2[data-number]::before {
+  content: attr(data-number) " ";
+  color: var(--c-sapphire);
+  margin-right: 0.5rem;
+}
+
+.slidev-layout.cover,
+.slidev-layout.intro {
+  @apply h-full grid;
+  /* Use semi-transparent background color that acts as overlay when background image is present */
+  background-color: rgba(239, 241, 245, 0.85); /* Light mode: 85% opacity */
+
+  h1 {
+    @apply text-6xl leading-20;
+    color: var(--c-blue);
+  }
+
+  h1 + p {
+    @apply -mt-2 opacity-50 mb-4;
+  }
+
+  p + h2,
+  ul + h2,
+  table + h2 {
+    @apply mt-10;
+  }
+}
+
+/* Dark mode overlay */
+html.dark .slidev-layout.cover,
+html.dark .slidev-layout.intro {
+  background-color: rgba(30, 30, 46, 0.85); /* Dark mode: 85% opacity */
+}
+
+/* Mermaid diagrams - ensure transparent background */
+.mermaid {
+  background-color: transparent;
+}
+
+/* PrimeVue icon colors - use Catppuccin colors */
+.pi {
+  color: var(--c-text);
+}
+
+/* PrimeVue focus ring colors */
+*:focus-visible {
+  outline-color: var(--c-blue);
+}
+
+/* Smooth transitions for all PrimeVue components */
+.p-component {
+  transition: all 0.2s ease-in-out;
+}
+
+/* PrimeVue Divider - ensure visible borders */
+[data-pc-name="divider"]::before {
+  border-color: var(--c-blue) !important;
+}
+
+/* ===== PrimeVue Timeline Styling ===== */
+
+/* Ensure connector line is visible and styled properly */
+[data-pc-name="timeline"] [data-pc-section="eventconnector"] {
+  background-color: var(--c-blue) !important;
+}
+
+/* Add subtle transitions to timeline events */
+[data-pc-name="timeline"] [data-pc-section="event"] {
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* Enhance marker appearance with subtle shadow */
+[data-pc-name="timeline"] [data-pc-section="eventmarker"] {
+  box-shadow: 0 0 0 3px rgba(137, 180, 250, 0.1);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* Add hover effect to markers */
+[data-pc-name="timeline"] [data-pc-section="eventmarker"]:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 0 5px rgba(137, 180, 250, 0.15);
+}
+
+/* Dark mode adjustments */
+html.dark [data-pc-name="timeline"] [data-pc-section="eventmarker"] {
+  box-shadow: 0 0 0 3px rgba(137, 180, 250, 0.15);
+}
+
+html.dark [data-pc-name="timeline"] [data-pc-section="eventmarker"]:hover {
+  box-shadow: 0 0 0 5px rgba(137, 180, 250, 0.2);
+}
+
+/* ===== PrimeVue OrganizationChart Styling ===== */
+
+/* Remove padding from table cells for proper connector alignment */
+[data-pc-name="organizationchart"] td[data-pc-section="cell"],
+[data-pc-name="organizationchart"] td[data-pc-section="linecell"],
+[data-pc-name="organizationchart"] td[data-pc-section="nodecell"] {
+  padding: 0 !important;
+}
+
+/* Ensure all connectors are properly visible */
+[data-pc-name="organizationchart"] [data-pc-section="connectordown"] {
+  background-color: var(--c-blue) !important;
+}
+
+[data-pc-name="organizationchart"] [data-pc-section="connectorleft"],
+[data-pc-name="organizationchart"] [data-pc-section="connectorright"] {
+  border-color: var(--c-blue) !important;
+}
+
+/* Add subtle shadow to nodes for depth */
+[data-pc-name="organizationchart"] [data-pc-section="node"] {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Enhance node hover state */
+[data-pc-name="organizationchart"] [data-pc-section="node"]:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+/* Toggle button focus ring using Catppuccin colors */
+[data-pc-name="organizationchart"] [data-pc-section="nodetoggler"]:focus-visible {
+  outline: 2px solid var(--c-blue);
+  outline-offset: 2px;
+}
+
+/* Dark mode adjustments for shadows */
+html.dark [data-pc-name="organizationchart"] [data-pc-section="node"] {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+html.dark [data-pc-name="organizationchart"] [data-pc-section="node"]:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* ===== PrimeVue TreeTable Styling ===== */
+
+/* Ensure proper spacing for tree indentation */
+[data-pc-name="treetable"] [data-pc-section="nodetogglebutton"] {
+  flex-shrink: 0;
+}
+
+/* Smooth icon rotation on expand/collapse */
+[data-pc-name="treetable"] [data-pc-section="nodetoggleicon"] {
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Rotate icon when expanded */
+[data-pc-name="treetable"] tr[aria-expanded="true"] [data-pc-section="nodetoggleicon"] {
+  transform: rotate(90deg);
+}
+
+/* Hide toggle button for leaf nodes */
+[data-pc-name="treetable"] [data-pc-section="nodetogglebutton"][style*="visibility: hidden"] {
+  pointer-events: none;
+  opacity: 0;
+}
+
+/* Enhance row selection visual feedback */
+[data-pc-name="treetable"] tr[data-p-selected="true"] {
+  background-color: var(--c-surface0) !important;
+  font-weight: 500;
+}
+
+/* Checkbox styling enhancements */
+[data-pc-name="treetable"] [data-pc-section="pcnodecheckbox"] [data-pc-section="box"] {
+  background-color: var(--c-base);
+  border-color: var(--c-overlay0);
+}
+
+[data-pc-name="treetable"] [data-pc-section="pcnodecheckbox"] [data-pc-section="box"][aria-checked="true"] {
+  background-color: var(--c-blue);
+  border-color: var(--c-blue);
+}
+
+[data-pc-name="treetable"] [data-pc-section="pcnodecheckbox"] [data-pc-section="box"][data-p-partialchecked="true"] {
+  background-color: var(--c-surface0);
+  border-color: var(--c-blue);
+}
+
+/* Header cell hover state for sortable columns */
+[data-pc-name="treetable"] th[data-p-sortable-column="true"]:hover {
+  background-color: var(--c-surface0);
+  cursor: pointer;
+}
+
+/* Sort icon visibility */
+[data-pc-name="treetable"] th[data-p-sorted="true"] [data-pc-section="sorticon"] {
+  color: var(--c-blue);
+}
+
+/* Empty state styling */
+[data-pc-name="treetable"] [data-pc-section="emptymessage"] {
+  font-style: italic;
+}
+
+/* Subtle animation for row interactions */
+[data-pc-name="treetable"] tbody tr {
+  transition: background-color 0.15s ease-in-out, transform 0.1s ease-in-out;
+}
+
+[data-pc-name="treetable"] tbody tr:active {
+  transform: scale(0.995);
+}
+
+/* Column resize indicator */
+[data-pc-name="treetable"] [data-pc-section="columnresizeindicator"] {
+  opacity: 0.7;
+}
+
+/* Dark mode enhancements */
+html.dark [data-pc-name="treetable"] [data-pc-section="pcnodecheckbox"] [data-pc-section="box"] {
+  border-color: var(--c-surface2);
+}
+
+html.dark [data-pc-name="treetable"] tbody tr:hover {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== PrimeVue Stepper Styling ===== */
+
+/* Step separator line styling */
+[data-pc-name="stepper"] [data-pc-section="separator"] {
+  transition: background-color 0.3s ease-in-out;
+  background-color: var(--c-overlay0);  /* Default visible separator */
+}
+
+/* Separator after completed step - show as completed */
+[data-pc-name="stepper"] [data-pc-section="step"][data-p-completed="true"] + [data-pc-section="separator"] {
+  background-color: var(--c-green);
+}
+
+/* Separator before active step */
+[data-pc-name="stepper"] [data-pc-section="separator"] + [data-pc-section="step"][data-p-active="true"] {
+  /* The separator gets green from the context.active in the preset */
+}
+
+/* Step header hover enhancements */
+[data-pc-name="stepper"] [data-pc-section="header"]:not([data-p-disabled="true"]) {
+  transition: all 0.2s ease-in-out;
+}
+
+[data-pc-name="stepper"] [data-pc-section="header"]:not([data-p-disabled="true"]):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(137, 180, 250, 0.1);
+}
+
+/* Active step glow effect */
+[data-pc-name="stepper"] [data-pc-section="header"][data-p-active="true"] {
+  box-shadow: 0 0 0 3px rgba(137, 180, 250, 0.15);
+}
+
+/* Completed step with checkmark */
+[data-pc-name="stepper"] [data-pc-section="number"][data-p-completed="true"]:not([data-p-active="true"])::after {
+  content: "✓";
+  position: absolute;
+  font-weight: bold;
+}
+
+/* Step number pulse animation on active */
+[data-pc-name="stepper"] [data-pc-section="number"][data-p-active="true"] {
+  animation: pulse-step 2s ease-in-out infinite;
+}
+
+@keyframes pulse-step {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(137, 180, 250, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(137, 180, 250, 0);
+  }
+}
+
+/* Disabled step styling */
+[data-pc-name="stepper"] [data-pc-section="header"][data-p-disabled="true"] {
+  cursor: not-allowed;
+  filter: grayscale(0.3);
+}
+
+/* Step panel fade-in transition */
+[data-pc-name="stepper"] [data-pc-section="content"] {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dark mode adjustments */
+html.dark [data-pc-name="stepper"] [data-pc-section="header"]:not([data-p-disabled="true"]):hover {
+  box-shadow: 0 2px 4px rgba(137, 180, 250, 0.2);
+}
+
+html.dark [data-pc-name="stepper"] [data-pc-section="header"][data-p-active="true"] {
+  box-shadow: 0 0 0 3px rgba(137, 180, 250, 0.25);
+}
+
