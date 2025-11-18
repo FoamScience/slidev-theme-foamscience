@@ -1,6 +1,6 @@
 {
   "name": "slidev-theme-foamscience",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "keywords": [
     "slidev-theme",
@@ -30,6 +30,7 @@
     "plotly.js-dist-min": "^3.3.0",
     "primeicons": "^7.0.0",
     "primevue": "^4.4.1",
+    "tiny-case": "^1.0.3",
     "yup": "^1.7.1"
   },
   "devDependencies": {
