@@ -38,6 +38,9 @@ importers:
       d3:
         specifier: ^7.9.0
         version: 7.9.0
+      playwright-chromium:
+        specifier: ^1.56.1
+        version: 1.56.1
       plotly.js-dist-min:
         specifier: ^3.3.0
         version: 3.3.0
@@ -50,7 +53,7 @@ importers:
     devDependencies:
       '@slidev/cli':
         specifier: ^52.8.0
-        version: 52.8.0(@babel/parser@7.28.5)(@nuxt/kit@3.20.1(magicast@0.5.1))(@types/markdown-it@14.1.2)(@types/node@22.19.1)(@unocss/webpack@66.5.6(webpack@5.102.1))(@vue/compiler-sfc@3.5.24)(magicast@0.5.1)(markdown-it-async@2.2.0)(postcss@8.5.6)(terser@5.44.1)
+        version: 52.8.0(@babel/parser@7.28.5)(@nuxt/kit@3.20.1(magicast@0.5.1))(@types/markdown-it@14.1.2)(@types/node@22.19.1)(@unocss/webpack@66.5.6(webpack@5.102.1))(@vue/compiler-sfc@3.5.24)(magicast@0.5.1)(markdown-it-async@2.2.0)(playwright-chromium@1.56.1)(postcss@8.5.6)(terser@5.44.1)
       vite:
         specifier: ^7.2.2
         version: 7.2.2(@types/node@22.19.1)(jiti@2.6.1)(terser@5.44.1)(yaml@2.8.1)
@@ -2257,6 +2260,16 @@ packages:
   plantuml-encoder@1.4.0:
     resolution: {integrity: sha512-sxMwpDw/ySY1WB2CE3+IdMuEcWibJ72DDOsXLkSmEaSzwEUaYBT6DWgOfBiHGCux4q433X6+OEFWjlVqp7gL6g==}
 
+  playwright-chromium@1.56.1:
+    resolution: {integrity: sha512-5TU+NMrofQg2j+DwIaQL/9eC84hs5YGz5Wng8OOdgq+kmu8usPLedxx2pJJ1Pb2TNFNiz3167RsUNFFvY3srNA==}
+    engines: {node: '>=18'}
+    hasBin: true
+
+  playwright-core@1.56.1:
+    resolution: {integrity: sha512-hutraynyn31F+Bifme+Ps9Vq59hKuUCz7H1kDOcBs+2oGguKkWTU50bBWrtz34OUWmIwpBTWDxaRPXrIXkgvmQ==}
+    engines: {node: '>=18'}
+    hasBin: true
+
   plotly.js-dist-min@3.3.0:
     resolution: {integrity: sha512-XENvNJRiMmoMsktlO2DA635vmLU8Be0eIy2Y58is9qudNQqpvGBu4y50cBj7rl1hS3htP+1XnCUrFmyvwbtP0w==}
 
@@ -3544,7 +3557,7 @@ snapshots:
 
   '@shikijs/vscode-textmate@10.0.2': {}
 
-  '@slidev/cli@52.8.0(@babel/parser@7.28.5)(@nuxt/kit@3.20.1(magicast@0.5.1))(@types/markdown-it@14.1.2)(@types/node@22.19.1)(@unocss/webpack@66.5.6(webpack@5.102.1))(@vue/compiler-sfc@3.5.24)(magicast@0.5.1)(markdown-it-async@2.2.0)(postcss@8.5.6)(terser@5.44.1)':
+  '@slidev/cli@52.8.0(@babel/parser@7.28.5)(@nuxt/kit@3.20.1(magicast@0.5.1))(@types/markdown-it@14.1.2)(@types/node@22.19.1)(@unocss/webpack@66.5.6(webpack@5.102.1))(@vue/compiler-sfc@3.5.24)(magicast@0.5.1)(markdown-it-async@2.2.0)(playwright-chromium@1.56.1)(postcss@8.5.6)(terser@5.44.1)':
     dependencies:
       '@antfu/ni': 27.0.1
       '@antfu/utils': 9.3.0
@@ -3616,6 +3629,8 @@ snapshots:
       vue: 3.5.24(typescript@5.9.3)
       yaml: 2.8.1
       yargs: 18.0.0
+    optionalDependencies:
+      playwright-chromium: 1.56.1
     transitivePeerDependencies:
       - '@babel/parser'
       - '@nuxt/kit'
@@ -5689,6 +5704,12 @@ snapshots:
       pathe: 2.0.3
 
   plantuml-encoder@1.4.0: {}
+
+  playwright-chromium@1.56.1:
+    dependencies:
+      playwright-core: 1.56.1
+
+  playwright-core@1.56.1: {}
 
   plotly.js-dist-min@3.3.0: {}
 

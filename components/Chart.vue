@@ -323,10 +323,6 @@ const renderComponentBased = (svg: d3.Selection<SVGSVGElement, unknown, null, un
     .nice()
     .range([height - margin.bottom, margin.top])
 
-  // Debug logging for scale domains
-  console.log(`[Chart] Scale domains - X: [${x.domain()}], Y: [${y.domain()}]`)
-  console.log(`[Chart] Scale ranges - X: [${x.range()}], Y: [${y.range()}]`)
-
   // Check if we have bar charts to use categorical axis
   const hasVerticalBars = data.components.some(comp =>
     comp.type === 'bar' && comp.orientation !== 'horizontal'
@@ -592,7 +588,6 @@ const renderLine = (
 
   // Debug logging
   const dataLength = (comp.data as number[]).length
-  console.log(`[Chart] renderLine ${comp.id}: isNew=${isNew}, dataLength=${dataLength}, color=${comp.color}, strokeWidth=${comp.strokeWidth || 2}`)
 
   // Update stroke properties (but not path data yet)
   path
@@ -609,14 +604,12 @@ const renderLine = (
     path.attr('d', line)
     const pathString = path.attr('d')
     const totalLength = path.node()?.getTotalLength() || 0
-    console.log(`[Chart] ${comp.id}: path preview="${pathString?.substring(0, 50)}...", totalLength=${totalLength}`)
 
     // Validate path length before attempting animation
     if (totalLength === 0 || isNaN(totalLength)) {
       console.warn(`[Chart] ${comp.id}: Invalid path length (${totalLength}), skipping animation`)
       path.attr('stroke-dasharray', null).attr('data-animated', 'true')
     } else {
-      console.log(`[Chart] ${comp.id}: Starting animation with dasharray="${totalLength} ${totalLength}"`)
 
       // Mark this path as animating
       path.attr('data-animating', 'true')
@@ -680,7 +673,6 @@ const renderArea = (
   // Debug logging
   const upperLength = (comp.data.upper as number[]).length
   const lowerLength = (comp.data.lower as number[]).length
-  console.log(`[Chart] renderArea ${comp.id}: isNew=${isNew}, upperLength=${upperLength}, lowerLength=${lowerLength}, color=${comp.color}`)
 
   path
     .datum(comp.data.upper as number[])
@@ -689,7 +681,6 @@ const renderArea = (
     .attr('stroke', mapColorToTheme(comp.color))
 
   const pathString = path.attr('d')
-  console.log(`[Chart] ${comp.id}: area path preview="${pathString?.substring(0, 50)}..."`)
 
   if (isNew) {
     path

@@ -1,6 +1,6 @@
 {
   "name": "slidev-theme-foamscience",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "type": "module",
   "keywords": [
     "slidev-theme",
@@ -27,6 +27,7 @@
     "@iconify-json/uim": "^1.2.3",
     "@slidev/types": "^52.8.0",
     "d3": "^7.9.0",
+    "playwright-chromium": "^1.56.1",
     "plotly.js-dist-min": "^3.3.0",
     "primeicons": "^7.0.0",
     "primevue": "^4.4.1"

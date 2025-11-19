@@ -13,8 +13,6 @@ function calculateHeaderNumbering() {
   const slideElements = document.querySelectorAll('.slidev-page')
   const numberingMap: Record<number, Record<number, string>> = {}
 
-  console.log('[HeaderNumbering] Calculating numbering for', slideElements.length, 'slide elements')
-
   let h1Counter = 0
   let h2Counter = 0
   let currentH1 = 0
@@ -26,14 +24,12 @@ function calculateHeaderNumbering() {
 
     // Skip first slide (cover page)
     if (slideIndex === 0) {
-      console.log(`[HeaderNumbering] Skipping slide ${slideIndex} - cover page`)
       return
     }
 
     // Check frontmatter for hideInToc
     const slideData = slides.value?.[slideIndex]
     if (slideData?.frontmatter?.hideInToc === true) {
-      console.log(`[HeaderNumbering] Skipping slide ${slideIndex} - hideInToc in frontmatter`)
       return
     }
 
@@ -42,12 +38,10 @@ function calculateHeaderNumbering() {
     const hasToc = slide.querySelector('.slidev-toc') !== null
 
     if (hasToc) {
-      console.log(`[HeaderNumbering] Skipping slide ${slideIndex} - contains ToC`)
       return
     }
 
     const headers = slide.querySelectorAll('h1, h2')
-    console.log(`[HeaderNumbering] Slide ${slideIndex} has ${headers.length} headers`)
 
     headers.forEach((header, headerIndex) => {
       const headerText = header.textContent?.trim() || ''
@@ -75,7 +69,6 @@ function calculateHeaderNumbering() {
 
   // Store in localStorage
   localStorage.setItem(STORAGE_KEY, JSON.stringify(numberingMap))
-  console.log('[HeaderNumbering] Numbering map:', numberingMap)
   return numberingMap
 }
 
@@ -97,14 +90,10 @@ function applyHeaderNumbering(numberingMap?: Record<number, Record<number, strin
 }
 
 onMounted(() => {
-  console.log('[HeaderNumbering] Component mounted')
-  console.log('[HeaderNumbering] total slides:', total.value)
-
   document.body.classList.add('header-numbering-enabled')
 
   // Clear stale cache to force fresh calculation
   localStorage.removeItem(STORAGE_KEY)
-  console.log('[HeaderNumbering] Cleared stale cache')
 
   // Recalculate after slides are loaded
   let attempts = 0
@@ -121,8 +110,6 @@ onMounted(() => {
       totalHeaders += slide.querySelectorAll('h1, h2').length
     })
 
-    console.log(`[HeaderNumbering] Attempt ${attempts}: slideElements=${slideElements.length}, expectedSlides=${expectedSlides}, headers=${totalHeaders}`)
-
     // Wait until we have slides and headers are appearing
     if (slideElements.length >= expectedSlides && expectedSlides > 0 && totalHeaders > 0) {
       // If header count is still increasing, wait more
@@ -134,11 +121,9 @@ onMounted(() => {
 
       const numberingMap = calculateHeaderNumbering()
       applyHeaderNumbering(numberingMap)
-      console.log(`[HeaderNumbering] Calculated for ${slideElements.length} slides with ${totalHeaders} headers`)
     } else if (attempts < 30) {
       setTimeout(recalculateWhenReady, 300)
     } else {
-      console.log('[HeaderNumbering] Gave up after 30 attempts')
     }
   }
 
@@ -159,7 +144,6 @@ onMounted(() => {
     })
 
     if (foundNewHeaders) {
-      console.log('[HeaderNumbering] New headers detected, recalculating...')
       const numberingMap = calculateHeaderNumbering()
       applyHeaderNumbering(numberingMap)
     }
@@ -196,7 +180,6 @@ onMounted(() => {
     }, 100)
   })
 
-  console.log('Header numbering enabled')
 })
 </script>
 

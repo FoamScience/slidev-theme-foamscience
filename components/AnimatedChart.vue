@@ -40,28 +40,23 @@ const loadStates = async () => {
   error.value = null
 
   try {
-    console.log('[AnimatedChart] Loading states:', props.states)
     const promises = props.states.map(async (state) => {
       if (typeof state.data === 'string') {
         // Add cache-busting parameter to force fresh data
         const url = state.data.includes('?')
           ? `${state.data}&_=${Date.now()}`
           : `${state.data}?_=${Date.now()}`
-        console.log('[AnimatedChart] Fetching from:', url)
         const response = await fetch(url)
         if (!response.ok) {
           throw new Error(`Failed to load state: ${response.statusText}`)
         }
         const data = await response.json()
-        console.log('[AnimatedChart] Loaded data:', data)
         return data
       }
-      console.log('[AnimatedChart] Using inline data:', state.data)
       return state.data
     })
 
     loadedStates.value = await Promise.all(promises)
-    console.log('[AnimatedChart] All states loaded:', loadedStates.value)
   } catch (err) {
     error.value = `Error loading chart states: ${err}`
     console.error('Chart states loading error:', err)
@@ -134,16 +129,12 @@ watch(isPlaying, (playing) => {
 // Update chart when state changes
 watch(currentData, (newData, oldData) => {
   if (newData && chartRef.value && newData !== oldData) {
-    console.log('[AnimatedChart] Updating chart with new data')
     chartRef.value.updateData(newData)
   }
 }, { deep: false })
 
 onMounted(async () => {
-  console.log('[AnimatedChart] Component mounted, loading states')
   await loadStates()
-  console.log('[AnimatedChart] States loaded, count:', loadedStates.value.length)
-  console.log('[AnimatedChart] Current data:', currentData.value)
   if (props.autoPlay) {
     isPlaying.value = true
   }

@@ -30,7 +30,7 @@ const currentLogo = computed(() => {
 const currentLayout = computed(() => frontmatter.value.layout || 'default')
 
 // List of layouts where logo should be hidden
-const hiddenLayouts = ['cover', 'image-right', 'iframe-right']
+const hiddenLayouts = ['cover', 'intro', 'image-right', 'iframe-right']
 
 const showLogo = computed(() => {
   // Don't show if no logo is configured

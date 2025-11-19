@@ -486,13 +486,16 @@ html.dark [data-pc-name="treetable"] tbody tr:hover {
 
 /* Step separator line styling */
 [data-pc-name="stepper"] [data-pc-section="separator"] {
+  flex: 1 1 0;
+  min-width: 2rem;
+  height: 2px;
+  background-color: var(--c-overlay0) !important;  /* Default visible separator */
   transition: background-color 0.3s ease-in-out;
-  background-color: var(--c-overlay0);  /* Default visible separator */
 }
 
 /* Separator after completed step - show as completed */
 [data-pc-name="stepper"] [data-pc-section="step"][data-p-completed="true"] + [data-pc-section="separator"] {
-  background-color: var(--c-green);
+  background-color: var(--c-green) !important;
 }
 
 /* Separator before active step */

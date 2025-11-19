@@ -59,7 +59,6 @@ export function useBibliography() {
       // Replace the entire Map to trigger reactivity
       bibData.value = newBibData
       bibFileLoaded.value = true
-      console.log('Loaded bibliography entries:', bibData.value.size)
       return true
     } catch (error) {
       console.error('Error parsing JSON bibliography file:', error)

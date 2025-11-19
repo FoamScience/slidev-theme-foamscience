@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, computed } from 'vue'
+import { ref, computed } from 'vue'
 import Chart from './Chart.vue'
 
 const testData = {
@@ -13,16 +13,6 @@ const testData = {
 const chartRef = ref(null)
 const logs = ref<string[]>([])
 
-const addLog = (msg: string) => {
-  logs.value.push(`${new Date().toLocaleTimeString()}: ${msg}`)
-  console.log(msg)
-}
-
-onMounted(() => {
-  addLog('Component mounted')
-  addLog(`Chart ref: ${chartRef.value ? 'exists' : 'null'}`)
-  addLog(`Test data: ${JSON.stringify(testData)}`)
-})
 </script>
 
 <template>

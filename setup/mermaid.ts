@@ -19,11 +19,6 @@ export default defineMermaidSetup(() => {
   // This ensures good readability on colored backgrounds
   const gitLabelColor = isDark ? getCSSVar('--c-base') : getCSSVar('--c-crust')
 
-  console.log('Mermaid setup: isDark =', isDark)
-  console.log('Mermaid setup: --c-text =', getCSSVar('--c-text'))
-  console.log('Mermaid setup: gitLabelColor =', gitLabelColor)
-  console.log('Mermaid setup: fontFamily =', fontFamily)
-
   return {
     theme: 'base',
     themeVariables: {

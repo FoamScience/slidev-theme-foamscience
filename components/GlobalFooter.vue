@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useNav, useSlideContext } from '@slidev/client'
+import PBreadcrumb from 'primevue/breadcrumb'
 
 const nav = useNav()
 const { currentSlideNo, total, currentLayout } = nav
-const { $slidev } = useSlideContext()
+const { $slidev, $nav } = useSlideContext()
 
 // Footer configuration from global config (which includes frontmatter from first slide)
 const footerConfig = computed(() => $slidev?.configs?.footer || {})

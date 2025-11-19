@@ -1,18 +1,21 @@
 ---
 theme: ./
+layout: cover
 headerNumbering: true
 # Optional: Add logo to all slides (appears in top-right corner)
 #logoLight: /images/nhr-tu-logo.png
-#logoDark: /images/nhr-tu-logo-dark.png
+#logoDark: /images/nhr-tu-logo.png
 hideInToc: true
 # logoClass: px-4 py-4  # Optional: customize spacing with Tailwind classes
 # Footer configuration
 footer:
   author: "Mohammed Elwardi Fadeli"
-  affiliation: "<Affiliation/Occasion>"
+  affiliation: "<Affiliation/Event>"
   github: "FoamScience"
   linkedin: "elwardi-fadeli"
+  showBreadcrumb: true
 background: https://cover.sli.dev
+backgroundOpacity: 0.65
 ---
 
 # Slidev Theme FoamScience
@@ -20,7 +23,7 @@ background: https://cover.sli.dev
 A Catppuccin-themed presentation template for academic/technical topics
 
 
-Avenue, Occasion, Date
+Avenue, Event, Date
 
 
 ---
@@ -48,15 +51,10 @@ This theme includes:
 All components automatically adapt to light/dark mode!
 
 ---
+layout: intro
+---
 
 # D3.js integration
-
-<br/>
-
-- 🎨 **D3.js charts** - feel at home with integrated theming both in light/dark modes
-- 📚 **Data** - can also be supplied with JSON file, unlocking external tool usage
-- 📊 **Incremental** - The input data can be structured for incremental rendering
-- **Flexible** - Toggle what legend item is shown by clicking on it!
 
 Extensive support for D3.js components
 
@@ -171,11 +169,11 @@ const radarData = {
 
 ::right::
 
-Violin plots
-<Chart data="/violin-demo.json" :height="350" legendPosition="top-right" />
-
 Error bars
-<Chart data="/errorbar-demo.json" :height="350" legendPosition="top-left" />
+<Chart data="/errorbar-demo.json" :height="250" legendPosition="top-left" />
+
+Violin plots
+<Chart data="/violin-demo.json" :height="350" legendPosition="top-left" />
 
 ::left::
 
@@ -212,7 +210,7 @@ Bubble chart
 <Chart data="/bubble-demo.json" :height="350" legendPosition="top-right" />
 
 ---
-zoom: 0.55
+zoom: 0.75
 layout: two-cols-header
 hideInToc: true
 ---
@@ -224,9 +222,7 @@ hideInToc: true
 ::right::
 
 Vertical bar charts
-<Chart data="/bar-chart-demo.json" :height="300" legendPosition="outside-top" />
-
-
+<Chart data="/bar-chart-demo.json" :height="500" legendPosition="outside-top" />
 
 ::left::
 
@@ -251,7 +247,7 @@ const horizontalBarData = {
 </script>
 
 Horizontal bar plots
-<Chart :data="horizontalBarData" :height="300" legendPosition="outside-top" />
+<Chart :data="horizontalBarData" :height="500" legendPosition="outside-top" />
 
 ---
 zoom: 0.75
@@ -345,7 +341,7 @@ bibtojson -i references.bib -o public/references.json
 ```
 
 
-Academic research shows that special relativity changed physics <Citation id="einstein1905" showAsFootnote="true" />, while the foundations of computer science were laid by pioneers like Turing <Citation id="turing1950" showAsFootnote="true" /> and Shannon <Citation id="shannon1948" showAsFootnote="true" />.
+Academic research shows that special relativity changed physics <Citation id="einstein1905" showAsFootnote=true />, while the foundations of computer science were laid by pioneers like Turing <Citation id="turing1950" showAsFootnote="true" /> and Shannon <Citation id="shannon1948" showAsFootnote="true" />.
 
 Modern programming practices <Citation id="knuth1984" showAsFootnote="true" /> build on structured approaches <Citation id="dijkstra1976"  showAsFootnote="true"/>, and machine learning relies on support vector networks <Citation id="vapnik1995" showAsFootnote="true" />.
 
@@ -440,4 +436,4 @@ class: "text-center"
 
 <span class="text-6xl">Thank You!</span>
 
-[Documentation](./docs/components.md) · [GitHub](https://github.com/FoamScience/slidev-theme-foamscience)
+[Components Docs](https://github.com/FoamScience/slidev-theme-foamscience/blob/main/docs/components.md) · [GitHub](https://github.com/FoamScience/slidev-theme-foamscience)
