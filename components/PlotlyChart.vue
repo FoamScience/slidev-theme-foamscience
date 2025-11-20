@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, watch, computed, nextTick } from 'vue'
-import * as Plotly from 'plotly.js-dist-min'
 import { usePlotlyTheming } from '../composables/usePlotlyTheming'
 
 interface Props {
@@ -15,7 +14,7 @@ interface Props {
    * Optional layout overrides
    * These will be merged with the themed layout
    */
-  layout?: Partial<Plotly.Layout>
+  layout?: Partial<any>
 
   /**
    * Plot height in pixels or CSS value
@@ -32,7 +31,7 @@ interface Props {
   /**
    * Optional Plotly config overrides
    */
-  config?: Partial<Plotly.Config>
+  config?: Partial<any>
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -45,6 +44,7 @@ const { plotlyLayout, plotlyConfig, deepMerge, isDark } = usePlotlyTheming()
 const plotData = ref<any>(null)
 const isLoading = ref(true)
 const error = ref<string | null>(null)
+const Plotly = ref<any>(null)
 
 /**
  * Computed height style
@@ -93,7 +93,7 @@ const loadData = async () => {
  * Render or update the Plotly chart
  */
 const renderPlot = async () => {
-  if (!plotDiv.value || !plotData.value || isLoading.value) return
+  if (!plotDiv.value || !plotData.value || isLoading.value || !Plotly.value) return
 
   try {
     // Extract data and layout from loaded JSON
@@ -118,7 +118,7 @@ const renderPlot = async () => {
     }
 
     // Use Plotly.react for efficient updates
-    await Plotly.react(plotDiv.value, data, layout, config)
+    await Plotly.value.react(plotDiv.value, data, layout, config)
   } catch (err) {
     error.value = err instanceof Error ? err.message : 'Error rendering plot'
     console.error('PlotlyChart render error:', err)
@@ -129,16 +129,25 @@ const renderPlot = async () => {
  * Clean up Plotly instance on unmount
  */
 const cleanup = () => {
-  if (plotDiv.value) {
-    Plotly.purge(plotDiv.value)
+  if (plotDiv.value && Plotly.value) {
+    Plotly.value.purge(plotDiv.value)
   }
 }
 
 // Load data on mount
 onMounted(async () => {
-  await loadData()
-  await nextTick()
-  await renderPlot()
+  try {
+    // Dynamically import Plotly to handle UMD module
+    const plotlyModule = await import('plotly.js-dist-min')
+    Plotly.value = plotlyModule.default || plotlyModule
+
+    await loadData()
+    await nextTick()
+    await renderPlot()
+  } catch (err) {
+    error.value = err instanceof Error ? err.message : 'Failed to load Plotly'
+    console.error('Failed to load Plotly:', err)
+  }
 })
 
 // Re-render when theme changes
