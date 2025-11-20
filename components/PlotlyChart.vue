@@ -139,7 +139,28 @@ onMounted(async () => {
   try {
     // Dynamically import Plotly to handle UMD module
     const plotlyModule = await import('plotly.js-dist-min')
-    Plotly.value = plotlyModule.default || plotlyModule
+
+    // Handle different export patterns (UMD, ES, CommonJS)
+    if (plotlyModule.default) {
+      Plotly.value = plotlyModule.default
+    } else if (plotlyModule.Plotly) {
+      Plotly.value = plotlyModule.Plotly
+    } else {
+      // If it's a namespace with all exports, the first value is likely Plotly
+      const keys = Object.keys(plotlyModule)
+      if (keys.length > 0 && plotlyModule[keys[0]]) {
+        Plotly.value = plotlyModule[keys[0]]
+      } else {
+        Plotly.value = plotlyModule
+      }
+    }
+
+    // Verify we have the required methods
+    if (!Plotly.value || typeof Plotly.value.react !== 'function') {
+      console.error('Loaded Plotly module:', plotlyModule)
+      console.error('Resolved Plotly object:', Plotly.value)
+      throw new Error('Failed to load Plotly.react method. Check console for details.')
+    }
 
     await loadData()
     await nextTick()
