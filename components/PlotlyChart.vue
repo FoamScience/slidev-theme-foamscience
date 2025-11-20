@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, watch, computed, nextTick } from 'vue'
-import Plotly from 'plotly.js-dist-min'
+import * as Plotly from 'plotly.js-dist-min'
 import { usePlotlyTheming } from '../composables/usePlotlyTheming'
 
 interface Props {
