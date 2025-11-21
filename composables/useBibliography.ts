@@ -19,9 +19,17 @@ interface BibEntry {
   [key: string]: any
 }
 
-const bibData = ref<Map<string, BibEntry>>(new Map())
-const citations = ref<Set<string>>(new Set())
-const bibFileLoaded = ref(false)
+// Use globalThis to ensure true singleton across all module instances
+const GLOBAL_KEY = Symbol.for('slidev-theme-foamscience:bibliography')
+if (!(globalThis as any)[GLOBAL_KEY]) {
+  (globalThis as any)[GLOBAL_KEY] = {
+    bibData: ref<Map<string, BibEntry>>(new Map()),
+    citations: ref<Set<string>>(new Set()),
+    bibFileLoaded: ref(false)
+  }
+}
+
+const { bibData, citations, bibFileLoaded } = (globalThis as any)[GLOBAL_KEY]
 
 export function useBibliography() {
   const loadJsonFile = async (jsonContent: string | object) => {
